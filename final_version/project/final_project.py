@@ -126,7 +126,7 @@ if __name__ == "__main__":
     st.title('S&P500 Screener & Stock Prediction')
     st.sidebar.title('Search criteria')
 
-    image = Image.open('stock.jpeg')
+    image = Image.open('final_version/project/stock.jpeg')
     _, col_image_2,_ = st.columns([1,3,1])
     with col_image_2:
         st.image(image, caption='@austindistel')

@@ -1,0 +1,9 @@
+pandas
+numpy
+scikit-learn
+yfinance==0.1.74
+pystan==2.19.1.1
+streamlit==1.10.0
+plotly
+pandas_datareader
+fbprophet==0.7.1

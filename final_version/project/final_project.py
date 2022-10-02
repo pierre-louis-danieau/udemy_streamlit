@@ -31,9 +31,9 @@ def parameter(df_sp,sector_default_val,cap_default_val):
 
     return option_sector, dividend_value, profit_value, cap_value
 
-
+@st.cache
 def read_data():
-    path_data = 'final_version/project/s&p500.csv'
+    path_data = 's&p500.csv' #'final_version/project/s&p500.csv'
     df_sp = pd.read_csv(path_data)
     return df_sp
 
@@ -41,7 +41,7 @@ def read_data():
 def company_price(df_sp,option_company):
     if option_company != None:
         ticker_company = df_sp.loc[df_sp['name'] == option_company,'ticker'].values[0]
-        data_price = pdr.get_data_yahoo(ticker_company, start="2011-12-31", end="2021-12-31")['Adj Close']
+        data_price = pdr.get_data_yahoo(ticker_company, start="2019-01-01", end="2021-12-31")['Adj Close']
         data_price = data_price.reset_index(drop = False)
         data_price.columns = ['ds','y']
         return data_price
@@ -92,13 +92,13 @@ def filtering(df_sp,sector_default_val,cap_default_val,option_sector,dividend_va
 def prediction(data_price):
     m = Prophet(daily_seasonality=True)
     m.fit(data_price)
-    future = m.make_future_dataframe(periods=365)
+    future = m.make_future_dataframe(periods=31)
     forecast = m.predict(future)
     return forecast
 
 
 def show_stock_price(data_price,forecast):
-    fig = px.line(data_price,x="ds", y="y", title='10 year real Stock price vs Stock price prediction')
+    fig = px.line(data_price,x="ds", y="y", title='3 years real Stock price vs Stock price prediction')
     fig.add_scatter(x=forecast['ds'], y=forecast['yhat'], mode='lines',name='Stock price prediction')
     fig.update_xaxes(title_text='Date')
     fig.update_yaxes(title_text='Stock price')
@@ -107,7 +107,7 @@ def show_stock_price(data_price,forecast):
 
 def metrics(forecast):
     stock_price_2021 = forecast.loc[forecast['ds'] == '2021-12-31', 'yhat'].values[0]
-    stock_price_2022 = forecast.loc[forecast['ds'] == '2022-12-31', 'yhat'].values[0]
+    stock_price_2022 = forecast.loc[forecast['ds'] == '2022-01-31', 'yhat'].values[0]
     performance = np.around((stock_price_2022/stock_price_2021 - 1)*100,2)
     return stock_price_2022,performance
 
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     st.title('S&P500 Screener & Stock Prediction')
     st.sidebar.title('Search criteria')
 
-    image = Image.open('final_version/project/stock.jpeg')
+    image = Image.open('stock.jpeg') #'final_version/project/stock.jpeg'
     _, col_image_2,_ = st.columns([1,3,1])
     with col_image_2:
         st.image(image, caption='@austindistel')
@@ -178,14 +178,14 @@ if __name__ == "__main__":
 
     col_prediction_1,col_prediction_2 = st.columns([1,2])
     with col_prediction_1:
-        st.metric(label="Stock price prediction 31 dec. 2022", value=str(np.around(stock_price_2022,2)), delta=str(performance)+ ' %')
+        st.metric(label="Stock price prediction 31 jan. 2022", value=str(np.around(stock_price_2022,2)), delta=str(performance)+ ' %')
         st.write('*Compared to 1st jan. 2022*')
 
     with col_prediction_2:
         with st.expander("Prediction explanation",expanded=True):
             st.write("""
-                The graph above shows the evolution of the selected stock price between 2012 and 2021 as well as the evolution of the prediction made between 2012 and 2022. 
-                The indicator on the left is the estimated stock price in december 2022 and its evolution between jan. 2022 and dec. 2022.
+                The graph above shows the evolution of the selected stock price between 1st jan. 2019 and 31 dec. 2021 as well as the evolution of the prediction made between 1st jan. 2019 and 31th jan. 2022. 
+                The indicator on the left is the estimated stock price in 31th jan 2022 and its evolution between 1st jan. 2022 and 31th jan. 2022.
                 
                 ⚠️⚠️ These are only estimates based on the evolution of previous years and are meant to be educational !
             """)

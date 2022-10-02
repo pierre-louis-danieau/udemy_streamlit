@@ -33,7 +33,7 @@ def parameter(df_sp,sector_default_val,cap_default_val):
 
 @st.cache
 def read_data():
-    path_data = 's&p500.csv' #'final_version/project/s&p500.csv'
+    path_data = 'final_version/project/s&p500.csv' 
     df_sp = pd.read_csv(path_data)
     return df_sp
 
@@ -122,11 +122,11 @@ if __name__ == "__main__":
     page_icon="📈",
     initial_sidebar_state="expanded",
     )
-
+    
     st.title('S&P500 Screener & Stock Prediction')
     st.sidebar.title('Search criteria')
 
-    image = Image.open('stock.jpeg') #'final_version/project/stock.jpeg'
+    image = Image.open('final_version/project/stock.jpeg')
     _, col_image_2,_ = st.columns([1,3,1])
     with col_image_2:
         st.image(image, caption='@austindistel')

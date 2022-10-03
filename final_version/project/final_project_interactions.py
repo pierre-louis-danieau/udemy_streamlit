@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from pandas_datareader import data as pdr
 import plotly.express as px
-from fbprophet import Prophet
 import numpy as np
 from PIL import Image
 
@@ -40,7 +39,7 @@ def read_data():
 def company_price(df_sp,option_company):
     if option_company != None:
         ticker_company = df_sp.loc[df_sp['name'] == option_company,'ticker'].values[0]
-        data_price = pdr.get_data_yahoo(ticker_company, start="2019-01-01", end="2021-12-31")['Adj Close']
+        data_price = pdr.get_data_yahoo(ticker_company, start="2011-12-31", end="2021-12-31")['Adj Close']
         data_price = data_price.reset_index(drop = False)
         data_price.columns = ['ds','y']
         return data_price

@@ -38,12 +38,12 @@ def display_media():
     st.header("Streamlit display media tutorial")
 
     st.header("Image")
-    image = Image.open('stock.jpeg')
+    image = Image.open('final_version/exercices/streamlit_basics/stock.jpeg')
 
     st.image(image, caption='@austindistel', width = 250)
 
     st.header("Audio")
-    audio_file = open('audio.ogg', 'rb')
+    audio_file = open('final_version/exercices/streamlit_basics/audio.ogg', 'rb')
     audio_bytes = audio_file.read()
 
     st.audio(audio_bytes, format='audio/ogg')
@@ -51,7 +51,7 @@ def display_media():
     st.write("URL: https://upload.wikimedia.org/wikipedia/commons/c/c4/Muriel-Nguyen-Xuan-Chopin-valse-opus64-1.ogg")
 
     st.header("Video")
-    video_file = open('video.mp4', 'rb')
+    video_file = open('final_version/exercices/streamlit_basics/video.mp4', 'rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 

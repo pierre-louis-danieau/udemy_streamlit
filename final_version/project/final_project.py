@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from pandas_datareader import data as pdr
 import plotly.express as px
-from fbprophet import Prophet
 import numpy as np
 from PIL import Image
 
@@ -41,7 +40,7 @@ def read_data():
 def company_price(df_sp,option_company):
     if option_company != None:
         ticker_company = df_sp.loc[df_sp['name'] == option_company,'ticker'].values[0]
-        data_price = pdr.get_data_yahoo(ticker_company, start="2019-01-01", end="2021-12-31")['Adj Close']
+        data_price = pdr.get_data_yahoo(ticker_company, start="2011-12-31", end="2021-12-31")['Adj Close']
         data_price = data_price.reset_index(drop = False)
         data_price.columns = ['ds','y']
         return data_price
@@ -89,25 +88,17 @@ def filtering(df_sp,sector_default_val,cap_default_val,option_sector,dividend_va
 
     return df_sp
 
-def prediction(data_price):
-    m = Prophet(daily_seasonality=True)
-    m.fit(data_price)
-    future = m.make_future_dataframe(periods=31)
-    forecast = m.predict(future)
-    return forecast
 
-
-def show_stock_price(data_price,forecast):
-    fig = px.line(data_price,x="ds", y="y", title='3 years real Stock price vs Stock price prediction')
-    fig.add_scatter(x=forecast['ds'], y=forecast['yhat'], mode='lines',name='Stock price prediction')
+def show_stock_price(data_price):
+    fig = px.line(data_price,x="ds", y="y", title='10 years Stock Price ')
     fig.update_xaxes(title_text='Date')
     fig.update_yaxes(title_text='Stock price')
     st.plotly_chart(fig)
 
 
-def metrics(forecast):
-    stock_price_2021 = forecast.loc[forecast['ds'] == '2021-12-31', 'yhat'].values[0]
-    stock_price_2022 = forecast.loc[forecast['ds'] == '2022-01-31', 'yhat'].values[0]
+def metrics(data_price):
+    stock_price_2021 = data_price.loc[data_price['ds'] == '2012-01-03', 'y'].values[0]
+    stock_price_2022 = data_price.loc[data_price['ds'] == '2021-12-31', 'y'].values[0]
     performance = np.around((stock_price_2022/stock_price_2021 - 1)*100,2)
     return stock_price_2022,performance
 
@@ -123,7 +114,7 @@ if __name__ == "__main__":
     initial_sidebar_state="expanded",
     )
     
-    st.title('S&P500 Screener & Stock Prediction')
+    st.title('S&P500 Screener & Stock Analysis')
     st.sidebar.title('Search criteria')
 
     image = Image.open('final_version/project/stock.jpeg')
@@ -163,31 +154,30 @@ if __name__ == "__main__":
 
     ############# PART 2 - COMPANY SELECTION #####################
     st.subheader('Part 2 - Choose a company')
-    option_company = st.selectbox("Choose a company to invest on :",df_sp.name.unique())
+    option_company = st.selectbox("Choose a company from the following list :",df_sp.name.unique())
 
 
     ############# PART 3 - STOCK PREDICTION #####################
-    st.subheader('Part 3 - {} Stock Prediction'.format(option_company))
+    st.subheader('Part 3 - {} Stock Analysis'.format(option_company))
     data_price = company_price(df_sp, option_company)
-    forecast = prediction(data_price)
 
     ############ SHOW STOCK PRICE & PREDICTION ##############
-    show_stock_price(data_price,forecast)
-    stock_price_2022, performance = metrics(forecast)
+    show_stock_price(data_price)
+    stock_price_2022, performance = metrics(data_price)
 
 
     col_prediction_1,col_prediction_2 = st.columns([1,2])
     with col_prediction_1:
-        st.metric(label="Stock price prediction 31 jan. 2022", value=str(np.around(stock_price_2022,2)), delta=str(performance)+ ' %')
-        st.write('*Compared to 1st jan. 2022*')
+        st.metric(label="Stock price 31 dec. 2021", value=str(np.around(stock_price_2022,2)), delta=str(performance)+ ' %')
+        st.write('*Compared to 31 dec. 2011*')
 
     with col_prediction_2:
         with st.expander("Prediction explanation",expanded=True):
             st.write("""
-                The graph above shows the evolution of the selected stock price between 1st jan. 2019 and 31 dec. 2021 as well as the evolution of the prediction made between 1st jan. 2019 and 31th jan. 2022. 
-                The indicator on the left is the estimated stock price in 31th jan 2022 and its evolution between 1st jan. 2022 and 31th jan. 2022.
+                The graph above shows the evolution of the selected stock price between 31st dec. 2011 and 31 dec. 2021.
+                The indicator on the left is the stock price value in 31st dec. 2021 for the selected company and its evolution between 31st dec. 2011 and 31st dec. 2021.
                 
-                ⚠️⚠️ These are only estimates based on the evolution of previous years and are meant to be educational !
+                ⚠️⚠️ Theses value are computed based on what the Yahoo Finance API returns !
             """)
 
 

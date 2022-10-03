@@ -1,6 +1,0 @@
-pandas
-numpy
-plotly==5.10.0
-streamlit==1.10.0
-altair==4.2.0
-pandas_datareader

@@ -97,7 +97,11 @@ For example, to run the final application, execute :
 
 `streamlit run final_version/project/final_project.py`
 
-You should see a web window with a streamlit application!
+And to run the first code exercice (the streamlit foundation in the `streamlit_basics` repository):
+
+`streamlit run final_version/exercices/streamlit_basics/basic.py`
+
+You should then see a web window with the streamlit application!
 
 PS : The version of Python used during this training is : 3.9.6 
 

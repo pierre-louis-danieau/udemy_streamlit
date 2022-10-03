@@ -6,18 +6,19 @@
 
 This project is part of the [Streamlit.io](https://streamlit.io/) training course that I propose with a double objective:
 
-1) Learn how to use Streamlit.io, a Python framework that allows to develop web applications very simply, very commonly used by Data Scientists. 
-2) Develop a web application for forecasting the stock prices of S&P500 companies.
+1) Learn how to use Streamlit.io, a Python framework that allows to develop data/ML applications and commonly used by Data Scientists. 
+2) Develop a web application to analyze the stock prices of S&P500 companies.
 
 Here is a preview of the final version of the application developed in this directory : 
 
 *Step 1 : S&P500 Screener*
 
-<img width="600" alt="Streamlit web app stock forecasting" src="https://user-images.githubusercontent.com/67114372/192850839-61ce7103-7c7f-4740-b772-367826d134b6.png">
+<img width="600" alt="Streamlit web app stock forecasting" src="https://user-images.githubusercontent.com/67114372/193663427-d34271f8-df9f-4d4c-8041-c83bcd39b26c.png">
 
-*Step 2 : S&P500 Forecasting*
 
-<img width="600" alt="Streamlit web app stock forecasting" src="https://user-images.githubusercontent.com/67114372/193461869-b34c9e43-6376-4caf-8fde-119a6eab8691.png">
+*Step 2 : S&P500 Stock Analysis*
+
+<img width="600" alt="Streamlit web app stock forecasting" src="https://user-images.githubusercontent.com/67114372/193663471-5b35daf3-5be3-41e9-832b-94ed748cd8b6.png">
 
 
 ## 2️⃣ Presentation of the directory
@@ -46,7 +47,6 @@ Congratulations, you should see the directory appear locally on your computer. Y
 
 ## 4️⃣ Exercices folder
 
-
 The `exercises` folder is composed of 4 subfolders:
 - streamlit_basics : Python file on the basics of streamlit + input files (an audio recording, a photo, a video)
 - streamlit_interactions : Python file for training on streamlit widgets which allow to interact with the user.
@@ -54,12 +54,9 @@ The `exercises` folder is composed of 4 subfolders:
 - streamlit_advanced_features : Python file for training on the more advanced components of streamlit.
 
 
-
-
 ## 5️⃣ Projects folder
 
-### 1) Presentation of the project directory.
-The whole code of the final project is in the project project/ 
+The `project` folder is composed of 5 subfiles:
 
 You will find :
 - `final_project_basics.py` : The first step of the application with what was seen in the streamlit_basics training part.

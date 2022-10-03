@@ -20,6 +20,7 @@ Here is a preview of the final version of the application developed in this dire
 
 <img width="600" alt="Streamlit web app stock forecasting" src="https://user-images.githubusercontent.com/67114372/193663471-5b35daf3-5be3-41e9-832b-94ed748cd8b6.png">
 
+If you want to see the final application in production, click [here](https://pierre-louis-danieau-u-final-versionprojectfinal-project-jdqn00.streamlitapp.com/) !
 
 ## 2️⃣ Presentation of the directory
 
@@ -33,7 +34,7 @@ You will find all the answers in the `final_version` directory.
 
 Then, within these 2 folders, you will find :
 - An `exercise` folder: With all the exercises of the course.
-- A `project` folder in which you will find the 3 successive steps of the final project (the S&P500 prediction application) : `final_project_basics.py` / `final_project_interactions.py` / `final_project.py`
+- A `project` folder in which you will find the 3 successive steps of the final project (the S&P500 screener and stock analysis application) : `final_project_basics.py` / `final_project_interactions.py` / `final_project.py`
 
 ## 3️⃣ How to work with this directory
 
@@ -67,12 +68,12 @@ You will find :
 
 ## 6️⃣ How to execute the streamlit applications
 
-In order to run the python files in the `exercises` folder (there is a 's' because it is equivalent for the 2 `exercice` folder), you need to create a virtual environment and install the dependencies that are in the `requirements_exerices.txt` file.
+In order to run the all the python files, you need to create a virtual environment and install the dependencies that are in the `requirements.txt` file.
 
 To do this:
-1) Open a terminal and go to the exercise folder: 
+1) Open a terminal and go to the repository folder: 
 
-`cd final_version/exercises/`
+`cd udemy_streamlit`
 
 2) Install virtualenv : 
 
@@ -84,17 +85,17 @@ To do this:
 
 4) Activate it : 
 
-`source venv/bin/activate`
+`source env/bin/activate`
 
 5) Install dependencies : 
 
-`pip install -r requirements_exercises.txt`
+`pip install -r requirements.txt`
 
-Once the installation of the dependencies is finished, you can run all the python files which are in the 2 directories exercises (`initial_version/exercises/` and `final_version/exercises/`) with the command : `streamlit run file_name.py`.
+Once the installation of the dependencies is finished, you can run all the python files with the command : `streamlit run path_to_file/file_name.py`.
 
-For example, go to the `udemy_streamlit/final_version/exercises/` directory and run :
+For example, to run the final application, execute :
 
-`streamlit run basic.py`
+`streamlit run final_version/project/final_project.py`
 
 You should see a web window with a streamlit application!
 

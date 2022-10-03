@@ -54,6 +54,22 @@ The `exercises` folder is composed of 4 subfolders:
 - streamlit_advanced_features : Python file for training on the more advanced components of streamlit.
 
 
+
+
+## 5️⃣ Projects folder
+
+### 1) Presentation of the project directory.
+The whole code of the final project is in the project project/ 
+
+You will find :
+- `final_project_basics.py` : The first step of the application with what was seen in the streamlit_basics training part.
+- `final_project_interactions.py` : The second step of the application with what was seen in the streamlit_interactions training part.
+- `final_project.py`: The third and last step of the application with what was seen in the streamlit_visualizations and streamlit_advanced_features training part.
+- **s&p500.csv**: The csv file of most of the S&P500 companies with some indicators like market capitalization, dividend ratio...
+- **stock.jpeg**: A picture used in the layout of the application.
+
+## 6️⃣ How to execute the streamlit applications
+
 In order to run the python files in the `exercises` folder (there is a 's' because it is equivalent for the 2 `exercice` folder), you need to create a virtual environment and install the dependencies that are in the `requirements_exerices.txt` file.
 
 To do this:
@@ -88,45 +104,6 @@ You should see a web window with a streamlit application!
 PS : The version of Python used during this training is : 3.9.6 
 
 
-## 5️⃣ Projects folder
-
-### 1) Presentation of the project directory.
-The whole code of the final project is in the project project/ 
-
-You will find :
-- `final_project_basics.py` : The first step of the application with what was seen in the streamlit_basics training part.
-- `final_project_interactions.py` : The second step of the application with what was seen in the streamlit_interactions training part.
-- `final_project.py`: The third and last step of the application with what was seen in the streamlit_visualizations and streamlit_advanced_features training part.
-- **s&p500.csv**: The csv file of most of the S&P500 companies with some indicators like market capitalization, dividend ratio...
-- **stock.jpeg**: A picture used in the layout of the application.
-
-### 2) Execution of the project with Docker.
-
-In the `project/` directory you will find a docker folder with a Dockerfile. Indeed, the developed application being complex (with several dependencies to python libraries), it is preferable to run it in a Docker (an isolated environment as a container). Because although theoretically it is possible to run each of the python files in the `project/` folder with `streamlit run file_name.py`, but you might get some dependency errors ! So it's better to use Docker to avoid any problem !
-
-So follow these steps:
-
-1) Install Docker: 
-
---> I personally use docker desktop : [available here](https://docs.docker.com/get-docker/)
-
-
-2) Create a container: 
-
-Open docker desktop and run in a terminal the command line displayed (something like : `docker run -d -p 80:80 docker/getting-started`)
-
-3) Put the name of the file you want to run in the Dockerfile (by default it's `final_project.py`) and save it.
-
-
-4) Build step : 
-
-`docker build -t streamlit -f docker/Dockerfile .`
-
-5) Run step : 
-
-`docker run -p 8501:8501 streamlit`
-
-6) Open docker desktop and click on the icon of the container you just created : you should see a web page with the streamlit application !
 
 ----------------------------------
 

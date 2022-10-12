@@ -36,16 +36,6 @@ def read_data():
     df_sp = pd.read_csv(path_data)
     return df_sp
 
-def company_price(df_sp,option_company):
-    if option_company != None:
-        ticker_company = df_sp.loc[df_sp['name'] == option_company,'ticker'].values[0]
-        data_price = pdr.get_data_yahoo(ticker_company, start="2011-12-31", end="2021-12-31")['Adj Close']
-        data_price = data_price.reset_index(drop = False)
-        data_price.columns = ['ds','y']
-        return data_price
-
-    return None
-
 def filtering(df_sp,sector_default_val,cap_default_val,option_sector,dividend_value,profit_value,cap_value):
 
     #### DIVIDEND FILTERING ####

@@ -8,7 +8,6 @@ import altair as alt
 def plotly():
     st.header("Display graph with plotly")
     df = px.data.tips()
-    st.dataframe(df)
     fig = px.histogram(df, x="total_bill", y="tip", color="sex",marginal="box")
     st.plotly_chart(fig)
 
@@ -17,7 +16,6 @@ def altair():
     df = pd.DataFrame(
         np.random.randn(200, 3),
         columns=['a', 'b', 'c'])
-    st.dataframe(df)
 
     c = alt.Chart(df).mark_circle().encode(
         x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
@@ -29,7 +27,6 @@ def map():
     df = pd.DataFrame(
         np.random.randn(200, 2) / [50, 50] + [37.76, -122.4],
         columns=['lat', 'lon'])
-    st.dataframe(df)
 
     st.map(df)
 

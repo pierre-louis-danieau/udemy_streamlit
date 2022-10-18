@@ -97,9 +97,9 @@ def show_stock_price(data_price):
 
 
 def metrics(data_price):
-    stock_price_2021 = data_price.loc[data_price['ds'] == '2012-01-03', 'y'].values[0]
-    stock_price_2022 = data_price.loc[data_price['ds'] == '2021-12-31', 'y'].values[0]
-    performance = np.around((stock_price_2022/stock_price_2021 - 1)*100,2)
+    stock_price_2012 = data_price['y'].values[0] #Take the first value (In most case it is 3 jan. 2012)
+    stock_price_2022 = data_price['y'].values[-1] #Take the last value (In most case, it is 31 dec. 2021)
+    performance = np.around((stock_price_2022/stock_price_2012 - 1)*100,2)
     return stock_price_2022,performance
 
 

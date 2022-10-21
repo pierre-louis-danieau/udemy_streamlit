@@ -20,7 +20,7 @@ Here is a preview of the final version of the application developed in this dire
 
 <img width="600" alt="Streamlit web app stock forecasting" src="https://user-images.githubusercontent.com/67114372/193663471-5b35daf3-5be3-41e9-832b-94ed748cd8b6.png">
 
-If you want to see the final application in production, click [here](https://pierre-louis-danieau-u-final-versionprojectfinal-project-jdqn00.streamlitapp.com/) !
+If you want to see the final application in production, click [here](https://pierre-louis-danieau-u-final-versionprojectfinal-project-mh4one.streamlitapp.com/) !
 
 ## 2️⃣ Presentation of the directory
 

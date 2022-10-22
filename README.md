@@ -26,7 +26,7 @@ If you want to see the final application in production, click [here](https://pie
 
 Here is the architecture of the course directory :
 
-<img width="600" alt="repository tree" src="https://user-images.githubusercontent.com/67114372/192692640-720d4bb5-c3ce-422c-9bac-d6ebd8780954.png">
+<img width="600" alt="repository tree" src="https://user-images.githubusercontent.com/67114372/197332282-a9f17712-5c54-4b50-9e01-67b0bbe814b3.png">
 
 The `initial_version` directory contains the same files as the `final_version` directory. The difference is that the files in the `initial_version` directory are empty and will be completed with the explanations during the training.
 

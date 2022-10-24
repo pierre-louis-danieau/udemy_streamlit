@@ -1,6 +1,6 @@
 # Udemy Streamlit Github Repository
 
---> [Link to the udemy course on Streamlit 🎉](https://www.udemy.com/)
+--> [Link to the udemy course on Streamlit 🎉](https://www.udemy.com/course/streamlit-deployer-son-app-de-machine-learning-sur-le-web/)
 
 ## 1️⃣ Presentation
 
@@ -111,6 +111,6 @@ PS : The version of Python used during this training is : 3.9.6
 
 🎉🎉 That's it, you normally have all the elements to work on this repository yourself ! 🎉🎉
 
---> [Link to the udemy course on Streamlit](https://www.udemy.com/)
+--> [Link to the udemy course on Streamlit](https://www.udemy.com/course/streamlit-deployer-son-app-de-machine-learning-sur-le-web/)
 
 Happy training !

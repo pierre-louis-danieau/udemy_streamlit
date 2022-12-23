@@ -4,6 +4,7 @@ from pandas_datareader import data as pdr
 import plotly.express as px
 import numpy as np
 from PIL import Image
+import yfinance as yf
 
 def parameter(df_sp,sector_default_val,cap_default_val):
     
@@ -118,6 +119,7 @@ if __name__ == "__main__":
     st.sidebar.title('Search criteria')
 
     image = Image.open('final_version/project/stock.jpeg')
+    yf.pdr_override()
     _, col_image_2,_ = st.columns([1,3,1])
     with col_image_2:
         st.image(image, caption='@austindistel')

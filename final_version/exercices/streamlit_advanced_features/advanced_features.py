@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from pandas_datareader import data as pdr
+import yfinance as yf
 
 def form():
     st.header("Streamlit Form tutorial")
@@ -48,7 +49,7 @@ if __name__ == "__main__":
         page_title="streamlit advanced features",
         layout="centered"
     )
-
+    yf.pdr_override()
     st.title("Streamlit advanced features")
 
     ##############################################

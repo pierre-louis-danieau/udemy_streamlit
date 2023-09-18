@@ -1,3 +1,4 @@
+import math
 import streamlit as st
 import pandas as pd
 from pandas_datareader import data as pdr
@@ -20,7 +21,14 @@ def parameter(df_sp,sector_default_val,cap_default_val):
     #### MARKET CAP #####
 
     #### DIVIDEND #####
-    dividend_value = st.sidebar.slider('Dividend rate between than (%) : ', 0.0, 10.0, value = (0.0,10.0))
+    dividend_min_value = float(math.floor(df_sp['dividendYield_%'].min()))
+    dividend_max_value = float(math.ceil(df_sp['dividendYield_%'].max()))
+    dividend_value = st.sidebar.slider(
+        'Dividend rate between than (%): ',
+        dividend_min_value,
+        dividend_max_value,
+        value=(dividend_min_value, dividend_max_value)
+    )
     #### DIVIDEND #####
 
     #### PROFIT #####
